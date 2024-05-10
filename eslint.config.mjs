@@ -1,10 +1,28 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-
-export default [
-  {languageOptions: { globals: globals.browser }},
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+const config = [
+	{
+		languageOptions: {
+			globals: {
+				...globals.browser,
+				...globals.jest,
+				...globals.es2021,
+				...globals.node
+			}
+		}
+	},
+	pluginJs.configs.recommended,
+	...tseslint.configs.recommended
 ];
+
+config.overrides = [
+	{
+		env: {
+			jest: true
+		}
+	}
+];
+
+export default config;
