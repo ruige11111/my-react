@@ -42,7 +42,7 @@ import { unwindWork } from './fiberUnwindWork';
 
 let workInProgress: FiberNode | null = null;
 let wipRootRenderLane: Lane = NoLane;
-let rootDoesHasPassiveEffects: Boolean = false;
+let rootDoesHasPassiveEffects: boolean = false;
 
 type RootExitStatus = number;
 
